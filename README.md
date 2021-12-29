@@ -2,13 +2,16 @@ Forked from 0x36 on github who then rewrote the ida_kernelcache python framework
 
 Works as of Ghidra 10.1!
 
+Firstly Download the iometa-master.zip and unzip it. Open your terminal inside of the unzipped folder and run the command "make".
+after that drag and drop the contents of everything else in this repository inside this iometa folder. After that decompress the Kernelache by dragging a raw kernelcache in a hex viewer or either ghidra itself and find the magic of the macho header which should be either 0xfeedface note the offset and decompress it by running ./lzssdec -o "offset" < kernel > kernel.decrypted
+load the decrypted kernelcache into ghidra 
 
 # ghidra_kernelcache: a Ghidra iOS kernelcache framework for reverse engineering
 
 This framework is the end product of my experience in reverse engineering iOS kernelcache,I do manually look for vulnerabilities in the kernel and have automated most 
 of the things I really wanted to see in Ghidra to speed up the process of reversing, and this proven to be effective and saves a lot of time. 
 The framework works on iOS 12/13/14 and has been made to the public with the intention to help people to start VR in iOS kernel without the struggle of preparing their own environment,
-as I believe, this framework ( including the toolset it provides and with some basic knowledge in IOKit) is sufficient to start dealing with the Kernelcache.
+as I believe, this framework ( including the toolset it provides and with some basic knowledge in IOKit) is sufficient to start dealing with the Kernelcache. Then proceed down to loader steps.
 
 The whole framework is written in Python,and can be extended to build tools upon, it provides some basic APIs which you can use in almost any project and save time from reading the verbose manual, you can just read the code in **[utils/](https://github.com/0x36/ghidra_kernelcache/tree/master/utils)** directory.
 
@@ -36,7 +39,7 @@ git clone https://github.com/0x36/ghidra_kernelcache.git $APATH
 ```
 
 Go to *`Windows → Script Manager`,* click on  *`script Directory` ,* then add *`$APATH/ghidra_kernelcache`* to the directory path list.
-
+*******************************LOADER STEPS***********************************
 Go to *`Windows → Script Manager`,* in *scripts* listing, go to *`iOS→kernel`* category and check the plugins seen there, they will appear in GHIDRA Toolbar .
 
 in [logos/](https://github.com/0x36/ghidra_kernelcache/tree/master/logos) directory, you can put you own logos for each tool.
