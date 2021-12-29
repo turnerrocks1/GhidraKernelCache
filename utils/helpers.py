@@ -137,7 +137,7 @@ def defineIOExternalMethodArguments():
 
     st.add(uint,"__reservedA","")
     st.add(PointerDataType(ulonglong),"structureVariableOutputData","")
-    st.setInternallyAligned(True)
+    """st.setDefaultAligned(True)"""
     if new :
         dtm.addDataType(new,None)
         dtm.addDataType(PointerDataType(new),None)
@@ -156,7 +156,7 @@ def defineIOExternalTrap():
     fdef.setGenericCallingConvention(GenericCallingConvention.thiscall)
     
     st = StructureDataType("IOExternalTrap", 0)
-    st.setToMachineAlignment()
+    """st.setToMachineAlignment()"""
     st.add(PointerDataType(IOService),"object","")
     st.add(PointerDataType(fdef),"func","")
 
@@ -174,7 +174,7 @@ def defineIOExternalMethod():
     fdef = parseCSignature(IOMethod_def)
     st = StructureDataType("IOExternalMethod", 0)
     
-    st.setToMachineAlignment()
+    """st.setToMachineAlignment()"""
     st.add(PointerDataType(IOService),"object","")
     st.add(PointerDataType(fdef),"func","")
     st.add(uint,"flags","")
@@ -195,7 +195,7 @@ def defineIOExternalAsyncMethod():
     fdef = parseCSignature(IOAsyncMethod_def)
     st = StructureDataType("IOExternalAsyncMethod", 0)
     #BUG: Work with alignement
-    st.setToMachineAlignment()
+    """st.setToMachineAlignment()"""
     st.add(PointerDataType(IOService),"object","")
     st.add(PointerDataType(fdef),"func","")
     st.add(uint,"flags","")
